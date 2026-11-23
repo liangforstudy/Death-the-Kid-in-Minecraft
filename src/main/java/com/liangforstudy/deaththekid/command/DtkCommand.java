@@ -113,7 +113,7 @@ public final class DtkCommand {
         }
         KidData d = maybe.get();
         String text = String.format(
-                "Mana %.0f/%d | Souls %d | Sanzu %d/%d | Rank %s (combo %d) | Symmetry %.0f%n"
+                "Mana %.0f/%d | Souls %d | Sanzu %d/%d | Rank %s (combo %d) | Symmetry %.0f\n"
                         + "Liz %.0f%% | Patty %.0f%% | Meister %s | Contracted %s",
                 d.getMana(), d.getMaxMana(), d.getSoulsAbsorbed(), d.getSanzuLines(), KidBalance.MAX_SANZU_LINES,
                 d.getRank(), d.getCombo(), d.getSymmetry(),

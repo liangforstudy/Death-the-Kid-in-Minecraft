@@ -23,8 +23,10 @@ public final class PlayerDataEvents {
     public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             KidDataProvider provider = new KidDataProvider();
+            // No event.addListener(provider::invalidate) here: Forge invalidates the old
+            // player's caps on death, and an invalidated LazyOptional can't be revived,
+            // so onClone would find no data to copy and every value would reset.
             event.addCapability(DeathTheKid.id("kid_data"), provider);
-            event.addListener(provider::invalidate);
         }
     }
 

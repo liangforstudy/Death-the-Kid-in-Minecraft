@@ -26,8 +26,4 @@ public class KidDataProvider implements ICapabilitySerializable<CompoundTag> {
     public void deserializeNBT(CompoundTag tag) {
         data.load(tag);
     }
-
-    public void invalidate() {
-        optional.invalidate();
-    }
 }
