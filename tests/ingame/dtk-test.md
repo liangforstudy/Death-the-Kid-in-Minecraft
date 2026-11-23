@@ -159,11 +159,10 @@ Stand on open ground. Clear items first: `/kill @e[type=item]`, and empty soul i
 | zombie ×3 | minor, 6 |
 | husk ×2 | corrupted, 4 |
 | evoker ×1 | elite, 2 |
-| hoglin ×1 | see note below |
+| hoglin ×1 | corrupted, 2 |
 | warden ×1 | boss, 2 |
-   Note on hoglin: it is in the `corrupted_soul_mobs` tag but has 40 max health, and the code
-   checks the 40-health elite rule before the corrupted tag, so it drops **elite** souls.
-   Record what it drops; flag it in Observations as a design question either way.
+   Note on hoglin: it has 40 max health but is in the `corrupted_soul_mobs` tag, and tags are
+   checked before the 40-health elite rule, so it drops **corrupted** souls, not elite.
 3. `/time set 1000`.
 
 ### T13 Errors
