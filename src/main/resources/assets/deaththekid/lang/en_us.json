@@ -1,0 +1,12 @@
+{
+  "itemGroup.deaththekid": "Death the Kid",
+  "item.deaththekid.shinigami_pact": "Shinigami Pact",
+  "item.deaththekid.minor_kishin_soul": "Minor Kishin Soul",
+  "item.deaththekid.corrupted_kishin_soul": "Corrupted Kishin Soul",
+  "item.deaththekid.elite_kishin_soul": "Elite Kishin Soul",
+  "item.deaththekid.boss_kishin_soul": "Boss Kishin Soul",
+  "tooltip.deaththekid.soul.bonus": "+%s Max Mana",
+  "tooltip.deaththekid.soul.usage": "Right-click to absorb, sneak to absorb the stack",
+  "message.deaththekid.soul.absorbed": "Absorbed %s soul(s): +%s Max Mana (now %s)",
+  "message.deaththekid.soul.at_cap": "Your Soul Wavelength is already at its limit (%s)"
+}

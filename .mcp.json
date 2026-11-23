@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "pendulum": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/pendulum-mcp-bridge.js"],
+      "env": {
+        "PENDULUM_HOST": "127.0.0.1",
+        "PENDULUM_PORT": "25566"
+      }
+    }
+  }
+}
