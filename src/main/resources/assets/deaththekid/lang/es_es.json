@@ -1,4 +1,12 @@
 {
   "itemGroup.deaththekid": "Death the Kid",
-  "item.deaththekid.shinigami_pact": "Pacto Shinigami"
+  "item.deaththekid.shinigami_pact": "Pacto Shinigami",
+  "item.deaththekid.minor_kishin_soul": "Alma Kishin menor",
+  "item.deaththekid.corrupted_kishin_soul": "Alma Kishin corrupta",
+  "item.deaththekid.elite_kishin_soul": "Alma Kishin de élite",
+  "item.deaththekid.boss_kishin_soul": "Alma Kishin de jefe",
+  "tooltip.deaththekid.soul.bonus": "+%s de maná máximo",
+  "tooltip.deaththekid.soul.usage": "Clic derecho para absorber, agáchate para absorber la pila",
+  "message.deaththekid.soul.absorbed": "Absorbiste %s alma(s): +%s de maná máximo (ahora %s)",
+  "message.deaththekid.soul.at_cap": "Tu longitud de onda del alma ya está en su límite (%s)"
 }
