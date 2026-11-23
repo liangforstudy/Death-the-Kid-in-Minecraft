@@ -26,3 +26,7 @@ The mod jar is written to `build/libs/`. GitHub Actions builds every push and pu
 ```
 
 Versions for Forge, GeckoLib and PlayerAnimator live in `gradle.properties`.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Death the Kid and *Soul Eater* belong to their original creators; this is an unofficial fan mod.

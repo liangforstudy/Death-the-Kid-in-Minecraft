@@ -43,13 +43,17 @@ public final class SoulDropEvents {
         return level.dimensionType().hasSkyLight() && level.isNight() && level.getMoonPhase() == 0;
     }
 
+    /**
+     * Tags always win; the 40-max-health elite rule only applies to monsters on no list.
+     * (Design call made by Claude, not from the original spec: an explicit tag is a deliberate
+     * choice, so e.g. hoglins in corrupted_soul_mobs drop Corrupted souls despite 40 health.)
+     */
     public static SoulTier tierOf(LivingEntity entity) {
         var type = entity.getType();
         if (type.is(Tags.EntityTypes.BOSSES) || type.is(ModTags.BOSS_SOUL_MOBS)) return SoulTier.BOSS;
-        if (type.is(ModTags.ELITE_SOUL_MOBS) || entity.getMaxHealth() >= KidBalance.ELITE_HEALTH_THRESHOLD) {
-            return SoulTier.ELITE;
-        }
+        if (type.is(ModTags.ELITE_SOUL_MOBS)) return SoulTier.ELITE;
         if (type.is(ModTags.CORRUPTED_SOUL_MOBS)) return SoulTier.CORRUPTED;
+        if (entity.getMaxHealth() >= KidBalance.ELITE_HEALTH_THRESHOLD) return SoulTier.ELITE;
         return SoulTier.MINOR;
     }
 
