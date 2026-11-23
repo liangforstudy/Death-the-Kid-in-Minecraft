@@ -1,0 +1,24 @@
+# Gradle / build
+.gradle/
+build/
+out/
+bin/
+run/
+run-data/
+
+# IDEs
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local game logs (can contain personal paths)
+*.log
