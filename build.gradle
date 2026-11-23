@@ -26,6 +26,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            // Dependency mixins (PlayerAnimator, GeckoLib) ship SRG refmaps; remap them to
+            // official names, or the dev client crashes on the first failed injection.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 "${mod_id}" {
@@ -36,6 +40,8 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
+            // A larger window makes screenshots for the agent easier to read.
+            args '--width', '1280', '--height', '720'
         }
 
         server {
@@ -68,6 +74,14 @@ repositories {
         name = 'KosmX'
         url = 'https://maven.kosmx.dev/'
     }
+    // CurseForge files as Maven artifacts (test-only dev-client mods below)
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+        content { includeGroup('curse.maven') }
+    }
+    // Local jars in libs/ (gitignored): the Pendulum fork build
+    flatDir { dir 'libs' }
 }
 
 dependencies {
@@ -75,6 +89,19 @@ dependencies {
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_anim_version}")
+
+    // Test-only: Pendulum, an MCP server inside the dev client (TCP 127.0.0.1:25566) that
+    // opencode uses to drive the game: clicks, hover with tooltip text, keys, typing,
+    // screenshots, inventory and commands. Uses our fork (github.com/liangforstudy/Pendulum),
+    // whose input works without window focus and never moves the OS cursor; the jar is built
+    // from it into libs/pendulum-<pendulum_version>.jar. Jupiter and Rhino are its libraries.
+    // runtimeOnly: loaded by runClient only, never part of the built jar.
+    // Only when the jar is present: libs/ is gitignored, so CI and fresh clones build without it.
+    if (file("libs/pendulum-${pendulum_version}.jar").exists()) {
+        runtimeOnly fg.deobf("local:pendulum:${pendulum_version}")
+        runtimeOnly fg.deobf("curse.maven:jupiter-1072905:${jupiter_file}")
+        runtimeOnly fg.deobf("curse.maven:rhino-416294:${rhino_file}")
+    }
 }
 
 tasks.named('processResources', ProcessResources).configure {

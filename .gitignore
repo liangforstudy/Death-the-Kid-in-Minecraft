@@ -22,3 +22,9 @@ Thumbs.db
 
 # Local game logs (can contain personal paths)
 *.log
+
+# Local test-only jars (Pendulum fork build)
+libs/*.jar
+
+# In-game test reports (screenshots, local)
+tests/ingame/reports/
